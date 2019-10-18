@@ -1,0 +1,46 @@
+version: 1.0.0.{build}
+image: Visual Studio 2019
+pull_requests:
+  do_not_increment_build_number: true
+branches:
+  only:
+  - develop
+  - master
+dotnet_csproj:
+  patch: true
+  file: '**\*.csproj'
+  assembly_version: '{version}'
+  file_version: '{version}'
+  informational_version: '{version}'
+  package_version: '{version}'
+  version: '{version}'
+nuget:
+  disable_publish_on_pr: true
+before_build:
+- cmd: nuget restore
+build:
+  publish_nuget: true
+  publish_nuget_symbols: true
+  include_nuget_references: true
+  verbosity: normal
+test:
+  assemblies: '**\*Tests.dll'
+  categories:
+    only:
+    - Unit
+    - End2End
+deploy:
+- provider: NuGet
+  server: https://www.myget.org/F/bogolib/api/v2/package
+  api_key:
+    secure: +o8ChNFGO9xkUdB3Olvo2UloIWEVbYHcf02JE5t/+LeR67wX7D0y1amLl8ai9qR3
+  symbol_server: https://www.myget.org/F/bogolib/symbols/api/v2/package
+  artifact: /.*\.nupkg/
+  on:
+    branch: develop
+- provider: NuGet
+  name: ga
+  api_key:
+    secure: rRnCXpaD8Q2NwTceL/5n2ecUm0KpT4TbyLNxvnyAAOpJX/WoNX1RcfgBwYu26RUS
+  on:
+    branch: master

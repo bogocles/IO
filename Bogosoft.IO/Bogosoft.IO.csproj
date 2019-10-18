@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<AssemblyVersion>1.0.0</AssemblyVersion>
+		<Authors>Clayton Roth</Authors>
+		<Company>Bogosoft</Company>
+		<Copyright>Copyright © 2019</Copyright>
+		<Description>Extended functionality for standard IO types.</Description>
+		<FileVersion>1.0.0</FileVersion>
+		<PackageId>Bogosoft.IO</PackageId>
+		<PackageLicenseUrl>https://raw.githubusercontent.com/bogosoft/IO/master/LICENSE</PackageLicenseUrl>
+		<PackageProjectUrl>https://github.com/bogosoft/IO</PackageProjectUrl>
+		<PackageTags>io text reader</PackageTags>
+		<RepositoryUrl>https://github.com/bogosoft/IO</RepositoryUrl>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<Title>Bogosoft.IO</Title>
+		<Version>1.0.0</Version>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<NoWarn>1701;1702;CS8425</NoWarn>
+		<DocumentationFile>bin\Debug\netstandard2.1\Bogosoft.IO.xml</DocumentationFile>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+		<NoWarn>1701;1702;CS8425</NoWarn>
+		<DocumentationFile>bin\Release\netstandard2.1\Bogosoft.IO.xml</DocumentationFile>
+	</PropertyGroup>
+</Project>
